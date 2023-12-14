@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
   <title>Form Validation Project</title>
 </head>
@@ -41,19 +42,19 @@
     document.getElementById("name").addEventListener("input", function () {
       const name = this.value;
       const isNameValid = validateName(name);
-      // Update UI or provide feedback based on isNameValid
+      
     });
 
     document.getElementById("email").addEventListener("input", function () {
       const email = this.value;
       const isEmailValid = validateEmail(email);
-      // Update UI or provide feedback based on isEmailValid
+     
     });
 
     document.getElementById("password").addEventListener("input", function () {
       const password = this.value;
       const isPasswordValid = validatePassword(password);
-      // Update UI or provide feedback based on isPasswordValid
+     
     });
   });
 
@@ -69,10 +70,10 @@
     const isPasswordValid = validatePassword(password);
 
     if (isNameValid && isEmailValid && isPasswordValid) {
-      // Form is valid, you can proceed with submission or other actions
+      
       console.log("Form is valid. Submitting...");
     } else {
-      // Display error messages or visual indicators
+      // Display error messages 
       console.log("Form validation failed. Please check your input.");
     }
   }
