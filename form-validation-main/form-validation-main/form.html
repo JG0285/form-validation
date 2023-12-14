@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+  <title>Form Validation Project</title>
+</head>
+<body>
+
+<div class="container mt-5">
+  <form id="validationForm">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" name="name">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" name="email">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" id="password" name="password">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("validationForm");
+
+    form.addEventListener("submit", function (event) {
+      validateForm(event);
+    });
+
+    document.getElementById("name").addEventListener("input", function () {
+      const name = this.value;
+      const isNameValid = validateName(name);
+      
+    });
+
+    document.getElementById("email").addEventListener("input", function () {
+      const email = this.value;
+      const isEmailValid = validateEmail(email);
+     
+    });
+
+    document.getElementById("password").addEventListener("input", function () {
+      const password = this.value;
+      const isPasswordValid = validatePassword(password);
+     
+    });
+  });
+
+  function validateForm(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const isNameValid = validateName(name);
+    const isEmailValid = validateEmail(email);
+    const isPasswordValid = validatePassword(password);
+
+    if (isNameValid && isEmailValid && isPasswordValid) {
+      
+      console.log("Form is valid. Submitting...");
+    } else {
+      // Display error messages 
+      console.log("Form validation failed. Please check your input.");
+    }
+  }
+
+  function validateName(name) {
+    return name.trim() !== ''; // Check if the name is not empty
+  }
+
+  function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  function validatePassword(password) {
+    return password.length >= 8; // Check if the password is at least 8 characters
+  }
+</script>
+
+</body>
+</html>
